@@ -7,12 +7,19 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('home');
-  this.route('orgs');
-  this.route('org', {path: 'org/:id'}, function() {
-    this.route('repos');
-    this.route('repo', {path: ':repoid'}, function() {
-      this.route('contributors');
+
+  // LIST OF ORGS
+  this.route('orgs'); //   /orgs
+
+  // INDIVIDUAL ORG
+  this.route('org', {path: 'org/:id'}, function() { //  /org
+
+    // LIST OF REPOS
+    this.route('repos'); // /org/repos
+
+    // INDIVIDUAL REPO
+    this.route('repo', {path: ':repoid'}, function() { // /org/repo
+      this.route('contributors'); // /org/repo/contributors
       this.route('issues');
     });
   });
